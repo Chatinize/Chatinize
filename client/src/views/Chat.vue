@@ -26,7 +26,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }

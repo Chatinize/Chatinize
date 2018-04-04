@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form v-on:submit.prevent="sendMessage" action="">
+        <form v-on:submit.prevent='$store.dispatch("sendMessage", messages.newMessage)' action="">
             <label for="message">Message</label>
             <input v-model="messages.newMessage" type="text" name="message" id="message">
             <button type="submit">Send</button>
@@ -12,8 +12,7 @@
 import { mapGetters, mapActions } from "vuex";
 export default {
   name: "ChatInput",
-  computed: mapGetters(["messages"]),
-  methods: mapActions(["sendMessage"])
+  computed: mapGetters(["messages"])
 };
 </script>
 

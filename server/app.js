@@ -1,33 +1,51 @@
 const express = require("express");
-        const cors = require("cors");
-        const bodyParser = require("body-parser");
-        const app = express();
-        const queries = require("./queries");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const app = express();
+const queries = require("./queries");
 
-        app.use(cors());
-        app.use(bodyParser.json());
+app.use(cors());
+app.use(bodyParser.json());
 
-        app.get("/", (request, response) => {
+app.get("/users", (request, response) => {
   queries
-    .list()
+    .list("users")
     .then(data => {
       response.json({ data });
     })
     .catch(console.error);
 });
 
-app.get("/:id", (request, response) => {
+app.get("/messages", (request, response) => {
   queries
-    .read(request.params.id)
+    .list("messages")
+    .then(data => {
+      response.json({ data });
+    })
+    .catch(console.error);
+});
+
+app.get("/users/:id", (request, response) => {
+  queries
+    .read("users", request.params.id)
     .then(data => {
       data ? response.json({ data }) : response.sendStatus(404);
     })
     .catch(console.error);
 });
 
-app.post("/", (request, response) => {
+app.get("/messages/:id", (request, response) => {
   queries
-    .create(request.body)
+    .read("messages", request.params.id)
+    .then(data => {
+      data ? response.json({ data }) : response.sendStatus(404);
+    })
+    .catch(console.error);
+});
+
+app.post("/messages", (request, response) => {
+  queries
+    .create("messages", request.body)
     .then(data => {
       response.status(201).json({ data: data });
     })
@@ -52,4 +70,4 @@ app.delete("/:id", (request, response) => {
     .catch(console.error);
 });
 
-        app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000);

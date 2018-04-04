@@ -1,9 +1,9 @@
 <template>
-    <div id="chatbox">
-        <ul>
-            <li v-for="message in messages.oldMessages">{{message}}</li>
-        </ul>
-    </div>
+  <div id="chatbox">
+    <ul>
+      <li v-for="message in messages.oldMessages" v-bind:key="message.id">{{message.message}}</li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -12,7 +12,10 @@ export default {
   name: "ChatBox",
   computed: mapGetters(["messages"]),
   methods: {
-    ...mapActions([])
+    ...mapActions(["getMessages"])
+  },
+  mounted() {
+    this.getMessages();
   }
 };
 </script>
@@ -28,5 +31,11 @@ export default {
   align-items: flex-start;
   overflow: auto;
   text-align: left;
+}
+ul {
+  list-style: none;
+}
+li {
+  border-top: 1px solid lightgray;
 }
 </style>

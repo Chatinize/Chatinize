@@ -28,8 +28,8 @@ export default {
 
 <style scoped>
 #chatbox {
-  height: 50vh;
-  width: 50vw;
+  height: 90%;
+  width: 90vw;
   border: solid;
   margin-bottom: 1rem;
   display: flex;

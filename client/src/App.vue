@@ -8,6 +8,16 @@
   </div>
 </template>
 
+<script>
+import styles from "@/reset.css";
+export default {
+  mounted() {
+    styles.use();
+  }
+};
+</script>
+
+
 <style>
 * {
   box-sizing: border-box;
@@ -18,9 +28,10 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100vh;
 }
 #nav {
-  padding: 30px;
+  height: 10vh;
 }
 
 #nav a {

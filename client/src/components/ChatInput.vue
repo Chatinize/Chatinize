@@ -1,8 +1,7 @@
 <template>
-    <div>
+    <div id="message">
         <form v-on:submit.prevent='$store.dispatch("sendMessage", messages)' action="">
-            <label for="message">Message</label>
-            <input v-model="messages.newMessage" type="text" name="message" id="message">
+            <input v-model="messages.newMessage" type="text" name="message" placeholder="Message">
             <button type="submit">Send</button>
         </form>
     </div>
@@ -18,6 +17,23 @@ export default {
 
 <style scoped>
 #message {
-  width: 45vw;
+  width: 90vw;
+}
+
+form {
+  width: 100%;
+}
+
+input {
+  width: 95%;
+}
+
+button {
+  width: 5%;
+}
+
+input,
+button {
+  height: 2rem;
 }
 </style>

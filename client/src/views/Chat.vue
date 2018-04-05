@@ -1,10 +1,7 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-    <div id="chatParent">
-      <ChatBox />
-      <ChatInput />
-    </div>
+  <div class="chat">
+    <ChatBox />
+    <ChatInput />
   </div>
 </template>
 
@@ -22,11 +19,10 @@ export default {
 </script>
 
 <style scoped>
-#chatParent {
+.chat {
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }
 </style>

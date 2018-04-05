@@ -28,6 +28,7 @@ export default {};
 }
 #nav {
   height: 10vh;
+  padding-top: 1rem;
 }
 
 #nav a {

@@ -10,6 +10,9 @@ module.exports = {
       .where("id", id)
       .first();
   },
+  readUsers(db, id) {
+    return database(db).select().where("git_id", id).first();
+  },
   create(table, data) {
     return database(table)
       .insert(data)

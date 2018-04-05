@@ -46,8 +46,8 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-  console.log('deserializeUser: ' + user.id)
-  queries.readUsers('users', profile.id).then(user => {
+  console.log('deserializeUser: ' + id)
+  queries.readUsers('users', id).then(user => {
     let newUser = JSON.parse(JSON.stringify(user))
     if (!newUser) { done(new Error('User not found! ' + id)) }
   done(null, newUser)
@@ -79,6 +79,7 @@ app.get("/users", (request, response) => {
 });
 
 app.get("/messages", (request, response) => {
+  console.log("req-user", request.newUser)
   queries
     .list("messages")
     .then(data => {

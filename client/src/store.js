@@ -17,12 +17,12 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    sendMessage: ({ commit }, message) => {
+    sendMessage: ({ commit }, messages) => {
       fetch("http://localhost:3000/messages", {
         method: "post",
         body: JSON.stringify({
-          message: message,
-          timestamp: new Date().toISOString(),
+          message: messages.newMessage,
+          timestamp: new Date().toLocaleString(),
           users_id: 2
         }),
         headers: new Headers({
@@ -30,7 +30,10 @@ export default new Vuex.Store({
         })
       })
         .then(response => response.json())
-        .then(response => commit("setOldMessages", response.data))
+        .then(response => {
+          commit("setOldMessages", response.data);
+          messages.newMessage = "";
+        })
         .catch(err => console.log(err));
     },
     getMessages: ({ commit }) => {

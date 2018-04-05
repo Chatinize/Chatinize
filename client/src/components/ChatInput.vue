@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form v-on:submit.prevent='$store.dispatch("sendMessage", messages.newMessage)' action="">
+        <form v-on:submit.prevent='$store.dispatch("sendMessage", messages)' action="">
             <label for="message">Message</label>
             <input v-model="messages.newMessage" type="text" name="message" id="message">
             <button type="submit">Send</button>

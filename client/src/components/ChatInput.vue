@@ -30,6 +30,7 @@ input {
 
 button {
   width: 5%;
+  background-color: #42b983;
 }
 
 input,

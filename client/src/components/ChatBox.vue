@@ -1,7 +1,7 @@
 <template>
   <div id="chatbox">
-    <div v-for="message in messages.oldMessages" v-bind:key="message.id">
-
+    <div v-for="message in messages.oldMessages" v-bind:key="message.id" class="message">
+      <p class="usersId">{{message.users_id}}</p>
       <p v-if="message.message !== null">{{message.message}}
         <small> - {{message.timestamp}}</small>
       </p>
@@ -39,13 +39,16 @@ export default {
   text-align: left;
   padding: 0 2rem;
 }
-ul {
-  list-style: none;
-}
-li {
-  border-top: 1px solid lightgray;
+.message {
+  margin: 0.5rem;
 }
 img {
   height: 100px;
+}
+
+small,
+.usersId {
+  font-size: 12px;
+  color: lightgray;
 }
 </style>

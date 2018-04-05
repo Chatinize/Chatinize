@@ -10,11 +10,7 @@
 
 <script>
 import styles from "@/reset.css";
-export default {
-  mounted() {
-    styles.use();
-  }
-};
+export default {};
 </script>
 
 

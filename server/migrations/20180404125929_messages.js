@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments("id").primary();
     table.string("message");
     table.string("image");
-    table.dateTime("timestamp");
+    table.string("timestamp");
     table
       .integer("users_id")
       .references("users.id")

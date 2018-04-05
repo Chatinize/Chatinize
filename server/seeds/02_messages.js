@@ -6,19 +6,20 @@ exports.seed = function(knex, Promise) {
         {
           id: 1,
           message: "Hey, whats up?",
-          timestamp: "2018-04-04T19:24:07.738Z",
+          timestamp: "4/4/2018, 7:50:46 PM",
           users_id: 2
         },
         {
           id: 2,
-          message: "Not much, how are you?",
-          timestamp: "2018-04-04T19:24:33.004Z",
-          users_id: 1
+          timestamp: "4/4/2018, 7:51:00 PM",
+          users_id: 1,
+          image:
+            "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg"
         },
         {
           id: 3,
           message: "I want in on this too!",
-          timestamp: "2018-04-04T19:24:45.644Z",
+          timestamp: "4/4/2018, 7:51:15 PM",
           users_id: 3
         }
       ]);

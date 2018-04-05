@@ -5,7 +5,7 @@
       <p v-if="message.message !== null">{{message.message}}
         <small> - {{message.timestamp}}</small>
       </p>
-      <div v-if="message.image !== null"><img v-bind:src="message.image" alt="">
+      <div v-if="message.image !== null"><img v-bind:src="message.image">
         <small> - {{message.timestamp}}</small>
       </div>
     </div>

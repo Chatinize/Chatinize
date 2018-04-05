@@ -1,10 +1,10 @@
 <template>
-    <div id="message">
-        <form v-on:submit.prevent='$store.dispatch("sendMessage", messages)' action="">
-            <input v-model="messages.newMessage" type="text" name="message" placeholder="Message">
-            <button type="submit">Send</button>
-        </form>
-    </div>
+  <div id="message">
+    <form v-on:submit.prevent='$store.dispatch("sendMessage", messages)' action="">
+      <input v-model="messages.newMessage" type="text" name="message" placeholder="Message">
+      <button type="submit">Send</button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -16,20 +16,12 @@ export default {
 </script>
 
 <style scoped>
-#message {
-  width: 90vw;
-}
-
-form {
-  width: 100%;
-}
-
 input {
-  width: 95%;
+  width: 75vw;
 }
 
 button {
-  width: 5%;
+  width: 15vw;
   background-color: #42b983;
 }
 

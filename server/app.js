@@ -8,13 +8,14 @@ const FileStore = require('session-file-store')(session);
 const passport = require('passport');
 const GitStrategy = require('passport-github').Strategy;
 
+require("dotenv").load();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(session({
   secret: 'bquyqueajhbd',
   resave: true,
   saveUninitialized: true,
-  store: new FileStore({ path: '/tmp/sessions' });
+  store: new FileStore({ path: '/tmp/sessions' })
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -26,6 +27,7 @@ passport.use(new GitStrategy({
   function (clientID, clientSecret, profile, done) {
     queries.readUsers('users', profile.id).then(user => {
       let newUser = JSON.parse(JSON.stringify(user))
+      console.log('newUser', newUser)
       if (!newUser) {
         newUser = { git_id: profile.id, email: profile.emails[0].value, username: profile.displayName, avatar: profile.photos[0].value, github: profile.profileUrl }
         queries.create('users', newUser).then(user => {
@@ -45,9 +47,11 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function (id, done) {
   console.log('deserializeUser: ' + user.id)
-  let user = users.find(u => u.id === id)
-  if (!user) { done(new Error('User not found! ' + id)) }
-  done(null, user)
+  queries.readUsers('users', profile.id).then(user => {
+    let newUser = JSON.parse(JSON.stringify(user))
+    if (!newUser) { done(new Error('User not found! ' + id)) }
+  done(null, newUser)
+  })
 });
 
 app.get('/', express.static('./public/index.html'))
@@ -59,7 +63,7 @@ app.get('/auth', (req, res, next) => {
 
 app.get('/auth/github/callback',
   passport.authenticate('github', {
-    successRedirect: 'http://localhost:8080/home/#/home',
+    successRedirect: 'http://localhost:8080/chat#/chat',
     failureRedirect: 'http://localhost:3000/auth/github[0]'
   }));
 
